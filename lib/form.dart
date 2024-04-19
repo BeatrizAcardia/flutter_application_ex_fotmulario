@@ -86,7 +86,7 @@ class _MeuformularioState extends State<Meuformulario> {
             },)
         ],),
            
-           Divider(thickness: 1, color: const Color.fromARGB(204, 158, 158, 158),),
+           Divider(thickness: 1.5, color: const Color.fromARGB(204, 158, 158, 158),),
 
            SizedBox(height: 30,),
 
@@ -124,6 +124,16 @@ class _MeuformularioState extends State<Meuformulario> {
                   });
                 },),
 
+        Divider(thickness: 1.5, color: const Color.fromARGB(204, 158, 158, 158),),
+
+        SwitchListTile(
+          title: Text("Permitir envio de notificações no email"),
+          value: value, 
+          onChanged: (value) {
+            setState(() {
+              
+            });
+          },)
                 
         ],)),
     );
