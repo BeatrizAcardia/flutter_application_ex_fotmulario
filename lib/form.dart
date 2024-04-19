@@ -23,6 +23,8 @@ class _MeuformularioState extends State<Meuformulario> {
   bool op2 = false;
   bool op3 = false;
 
+  bool permitir = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,7 +130,7 @@ class _MeuformularioState extends State<Meuformulario> {
 
         SwitchListTile(
           title: Text("Permitir envio de notificações no email"),
-          value: value, 
+          value: permitir, 
           onChanged: (value) {
             setState(() {
               
