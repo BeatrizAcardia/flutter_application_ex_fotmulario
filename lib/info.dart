@@ -1,12 +1,12 @@
+// ignore_for_file: prefer_final_fields, unused_field, non_constant_identifier_names
+
 class info{
   String nome = " ";
   String email = " ";
   String curso = " ";
-  String Inter1 = " ";
-  String Inter2 = " ";
-  String Inter3 = " ";
   bool permitir = false;
-  
+  List<String> listaInteresse = [];
+
   get getNome => this.nome;
 
  set setNome( nome) => this.nome = nome;
@@ -19,21 +19,15 @@ class info{
 
  set setCurso( curso) => this.curso = curso;
 
-  get getInter1 => this.Inter1;
-
- set setInter1( Inter1) => this.Inter1 = Inter1;
-
-  get getInter2 => this.Inter2;
-
- set setInter2( Inter2) => this.Inter2 = Inter2;
-
-  get getInter3 => this.Inter3;
-
- set setInter3( Inter3) => this.Inter3 = Inter3;
-
   get getPermitir => this.permitir;
 
  set setPermitir( permitir) => this.permitir = permitir;
+ 
+
+  info(this.nome, this.email, this.curso, this.listaInteresse, this.permitir);
 
 
+List<String> get getListaInteresse => this.listaInteresse;
+
+ set setListaInteresse(List<String> listaInteresse) => this.listaInteresse = listaInteresse;
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_ex_fotmulario/info.dart';
 
 class Meuformulario extends StatefulWidget {
   const Meuformulario({super.key});
@@ -27,13 +28,15 @@ class _MeuformularioState extends State<Meuformulario> {
   TextEditingController emailController = TextEditingController();
 
   String somente = " ";
-  String integrado = " ";
 
-  bool op1 = false;
-  bool op2 = false;
-  bool op3 = false;
+  bool _op1 = false;
+  bool _op2 = false;
+  bool _op3 = false;
 
   bool permitir = false;
+
+  List<info> listainfo = [];
+  List<String> listaInteresse = [];
 
   @override
   Widget build(BuildContext context) {
@@ -95,9 +98,9 @@ class _MeuformularioState extends State<Meuformulario> {
               Text("Integrado ao médio"),
               Radio(
                 value: "Integrado",
-                groupValue: integrado,
+                groupValue: somente,
                 onChanged: (value) {
-                  integrado = value!;
+                  somente = value!;
                   setState(() {});
                 },
               )
@@ -119,25 +122,34 @@ class _MeuformularioState extends State<Meuformulario> {
           ),
           CheckboxListTile(
             title: Text("Ecrita científica"),
-            value: op1,
+            value: _op1,
             onChanged: (value) {
-              op1 = value!;
+              _op1 = value!;
+              if (_op1 == true){
+                listaInteresse.add("Escrita cientifica");
+              }
               setState(() {});
             },
           ),
           CheckboxListTile(
             title: Text("Literatura Africana"),
-            value: op2,
+            value: _op2,
             onChanged: (value) {
-              op2 = value!;
+              _op2 = value!;
+               if (_op2 == true){
+                listaInteresse.add("Literatura Africana");
+              }
               setState(() {});
             },
           ),
           CheckboxListTile(
             title: Text("Artes"),
-            value: op3,
+            value: _op3,
             onChanged: (value) {
-              op3 = value!;
+              _op3 = value!;
+               if (_op3 == true){
+                listaInteresse.add("Artes");
+              }
               setState(() {});
             },
           ),
@@ -145,22 +157,28 @@ class _MeuformularioState extends State<Meuformulario> {
             thickness: 1.5,
             color: const Color.fromARGB(204, 158, 158, 158),
           ),
+
           SwitchListTile(
             title: Text("Permitir envio de notificações no email"),
             value: permitir,
             onChanged: (value) {
+              permitir = value;
               setState(() {});
             },
           ),
+
           Divider(
             thickness: 1.5,
             color: const Color.fromARGB(204, 158, 158, 158),
           ),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
                   onPressed: () {
+                    info i = info(nomeController.text, emailController.text, somente, listaInteresse, permitir);
+                    mostrar();
                     setState(() {});
                   },
                   style: ElevatedButton.styleFrom(
@@ -183,6 +201,19 @@ class _MeuformularioState extends State<Meuformulario> {
           )
         ],
       )),
+      
     );
+  }
+  
+  void mostrar(){
+    listainfo.forEach((info i){
+    print("=================================");
+    print("Nome: " + i.getNome + "\n" + "Email: " + i.getEmail + "\n" + "Curso: " + i.getCurso + "\n");
+      for (int i = 0; i < listaInteresse.length; i++){
+        print("Interesse: " + listaInteresse[i]);
+      }
+      print("\nPermitir notificações: " + permitir.toString());
+    });
+
   }
 }
