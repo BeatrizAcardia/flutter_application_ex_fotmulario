@@ -190,7 +190,14 @@ class _MeuformularioState extends State<Meuformulario> {
 
               ElevatedButton(
                   onPressed: () {
-           
+                    nomeController.clear();
+                    emailController.clear();
+                    somente = " ";
+                    listaInteresse.clear();
+                    permitir = false;
+                    _op1 = false;
+                    _op2 = false;
+                    _op3 = false;
                     setState(() {});
                   },
                    style: ElevatedButton.styleFrom(
